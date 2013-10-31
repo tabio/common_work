@@ -1,5 +1,8 @@
 <?php
+/***************************************
+send file by e-mail
 
+***************************************/
 function main($fpaths=array()) {
   try {
     var_dump($fpaths);
