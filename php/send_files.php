@@ -26,6 +26,7 @@ define('SMTP_HOST',      'ssl://hoge.mail.jp');
 define('PORT',           465);
 define('SMTP_USER',      'hoge@hoge.co.jp');
 define('SMTP_PASS',      '123456789');
+define('MAX_FILE_SIZE',  10); // Mbyte
 
 
 //***************************************************
@@ -140,7 +141,17 @@ function opt_msg($type=0,$msg='') {
     echo "[warn]  not found => $msg\n";
   } elseif($type === 4) {
     echo "[error] fail send mail => $msg\n";
+  } elseif($type === 5) {
+    echo "[error] file size over > ".MAX_FILE_SIZE."MB\n";
   }
+}
+
+function chk_file_size($files=array()) {
+  $size = 0;
+  foreach($files as $file) {
+    $size += @filesize($file);
+  }
+  return (($size / 1048576) > MAX_FILE_SIZE) ? 0 : 1;
 }
 
 //===================================================
@@ -157,6 +168,11 @@ for ($i=1;  $i<=$argc - 1; $i++) {
     // file not found
     opt_msg(3, $argv[$i]);
   }
+}
+
+// check file size
+if ($targets) {
+  if (!chk_file_size($targets)) opt_msg(5);
 }
 
 // send mail
