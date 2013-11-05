@@ -1,9 +1,14 @@
 <?php
 /**
- * send_files.php
- * Send file by e-mail
- * PHP version 5.4.14
- * @link   http://github.com/tabio/common_work
+ * [ file Name ]
+ *   send_files.php
+ * [ summary ]
+ *   send file by e-mail
+ * [ usage ]
+ *   php send_files.php [file path]...
+ * [ etc. ]
+ *   PHP version 5.4.14
+ *   @link   http://github.com/tabio/common_work
 */
 
 //---------------------------------------------------
