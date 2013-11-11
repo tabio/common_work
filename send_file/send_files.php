@@ -1,14 +1,17 @@
 <?php
 /**
- * [ file Name ]
- *   send_files.php
- * [ summary ]
+ * [ Summary ]
  *   send file by e-mail
- * [ usage ]
+ * [ Usage ]
  *   php send_files.php [file path]...
- * [ etc. ]
+ * [ Etc. ]
  *   PHP version 5.4.14
- *   @link   http://github.com/tabio/common_work
+ *   @link    https://github.com/tabio/common_work
+ *   @auther  tabio <tabio.github@gmail.com>
+ *   @version 1.0
+ *   @license Copyright (c) 2013 tabio
+ *            This software is released under the MIT License.
+ *            http://opensource.org/licenses/mit-license.php
 */
 
 //---------------------------------------------------
