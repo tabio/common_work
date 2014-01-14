@@ -31,7 +31,7 @@ fi
 if [ ! -e ${dir} ]; then
   echo "[ error ] no exist ${dir}"
 else
-  list=$(find ${dir} -type f -regex ".*\(jpg\|jpeg\|gif\|bmp\|png\)")
+  list=$(find lib -type f \( -name '*jpg' -or -name '*bmp' -or -name '*gif' -or -name '*png' -or -name '*JPG' -or -name '*jpeg' \))
   for tmp in ${list[@]};do
     fname="${cpdir}/$(basename ${tmp})"
     if [ -f $fname ]; then
