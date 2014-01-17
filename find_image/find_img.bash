@@ -11,7 +11,7 @@
 # @version 1.0
 # @license Copyright (c) 2013 tabio
 #          This software is released unser the MIT License.
-#           http://opensource.org/licenses/mit-license.php
+#          http://opensource.org/licenses/mit-license.php
 
 dir=$1
 
