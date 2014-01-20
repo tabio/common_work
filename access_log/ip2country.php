@@ -15,7 +15,7 @@
  *     234  192.168.1.27
  *
  * [Etc.]
- * @link      https://github.com/tabio/uniprot
+ * @link      https://github.com/tabio/common_work
  * @auther    tabio <tabio.github@gmail.com>
  * @version   1.0
  * @copyright Copyright (c) 2013 tabio
