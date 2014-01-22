@@ -4,7 +4,7 @@
  *   This program is to get country information for ip list.
  *
  * [Usage]
- *   php ip2country.php -f [target file] -c [cidr file path] 
+ *   php ip2country.php -f [target file] -c [cidr file path] -w[Contry Code]
  *
  * [target file format]
  *   --> tsv format
@@ -15,9 +15,9 @@
  *     234  192.168.1.27
  *
  * [Etc.]
- * @link      https://github.com/tabio/common_work
+ * @link      https://github.com/tabio/uniprot
  * @auther    tabio <tabio.github@gmail.com>
- * @version   1.0
+ * @version   1.1
  * @copyright Copyright (c) 2013 tabio
  *            All rights reserved.
  * @license   http://opensource.org/licenses/bsd-license.php New BSD License
@@ -77,7 +77,7 @@ function useage() {
 }
 
 
-function main($t_path, $c_path) {
+function main($t_path, $c_path, $w_code=null) {
   $res   = array();
 
   // set cidr information
@@ -91,8 +91,16 @@ function main($t_path, $c_path) {
       $tmp = split("\t", $line);
       $cn  = chkCountry($tmp[1], $cidrs);
       if ($cn) {
-        if (!isset($res[$cn])) $res[$cn] = 0;
-        $res[$cn] += $tmp[0];
+        if ($w_code) {
+          if ($cn == $w_code) {
+            if (!isset($res[$tmp[1]])) $res[$tmp[1]] = 0;
+            $res[$tmp[1]] += $tmp[0];
+          }
+        } else {
+          // count list
+          if (!isset($res[$cn])) $res[$cn] = 0;
+          $res[$cn] += $tmp[0];
+        }
       }
     }
 
@@ -108,7 +116,7 @@ function main($t_path, $c_path) {
 }
 
 //-- check argument
-$opt = getopt('f:c:');
+$opt = getopt('f:c:w::');
 if (isset($opt['f']) && !empty($opt['f'])
  && isset($opt['c']) && !empty($opt['c'])
 ) {
@@ -116,7 +124,7 @@ if (isset($opt['f']) && !empty($opt['f'])
     useage();
     exit(1);
   } else {
-    main($opt['f'], $opt['c']);
+    main($opt['f'], $opt['c'], @$opt['w']);
   }
 } else {
   useage();
