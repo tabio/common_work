@@ -48,10 +48,8 @@ function main( $g_id_lv1 ){
 
       $info = array();
       // parent info
-      if(!empty($xml->parents)){
-        foreach($xml->parents as $pval){
-          $info[(int)$pval->genreLevel] = (int)$pval->genreId;
-        }
+      if(!empty($xml->parents->parent)){
+        $info[(int)$xml->parents->parent->genreLevel] = (int)$xml->parents->parent->genreId;
       }
 
       // current info
