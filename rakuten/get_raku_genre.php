@@ -63,7 +63,7 @@ function main( $g_id_lv1 ){
 
       // output
       try{
-        $fp = fopen($fname, 'w+');
+        $fp = fopen($fname, 'a+');
         $line = mkSql($info);
         fwrite($fp, $line);
       } catch(Exception $e) {
@@ -83,7 +83,7 @@ function mkSql(&$info){
   $col    = "name";
   $values = "'".$info["name"]."'";
   $max    = 0;
-  $sql    = "INSERT INTO %s ( %s ) VALUES ( %s )";
+  $sql    = "INSERT INTO %s ( %s ) VALUES ( %s );\n";
 
   foreach($info as $key => $val){
     if($key != "name"){
