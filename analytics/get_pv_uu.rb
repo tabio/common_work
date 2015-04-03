@@ -2,7 +2,7 @@
 # coding: utf-8
 
 #---------------------------------------------------------------------------------
-# Summary   : Get PV or UU from google analytics api
+# Summary   : Get monthly PV or UU from google analytics api
 # Version   : 1.0
 # Auther    : tabio <tabio.github@gmail.com>
 # Copyright : Copyright (c) 2015 tabio All rights reserved.
