@@ -24,6 +24,21 @@ atwhoOptions = {
       kind = query[0].toLowerCase();
       query = query.slice(1);
       switch (false) {
+        case kind !== "t":
+          return $.getJSON("http://api.tiqav.com/search/random.json", function(data) {
+            var images;
+            images = [];
+            $.each(data, function(idx, val) {
+              url = "http://tiqav.com/" + val['id'] + "." + val['ext']
+              return images.push({
+                name: 'tiqav',
+                imageUrl: url,
+                imagePreviewUrl: previewUrl(url),
+                alt: "LGTM"
+              });
+            });
+            return callback(images);
+          });
         case kind !== "b":
           return $.getJSON("http://bjin.me/api/?type=rand&count=10&format=json", function(data) {
             var images;
