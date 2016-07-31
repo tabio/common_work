@@ -33,7 +33,7 @@ atwhoOptions = {
                 name: val['category'],
                 imageUrl: val['link'],
                 imagePreviewUrl: previewUrl(val['thumb']),
-                alt: "bjin.me"
+                alt: "LGTM"
               });
             });
             return callback(images);
