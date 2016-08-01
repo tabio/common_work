@@ -40,13 +40,14 @@ atwhoOptions = {
             return callback(images);
           });
         case kind !== "b":
-          return $.getJSON("http://bjin.me/api/?type=rand&count=10&format=json", function(data) {
+          return $.getJSON("http://bjin.me/api/?type=rand&count=15&format=json", function(data) {
             var images;
             images = [];
             $.each(data, function(idx, val) {
+              url = "http://bjin.me//images/pic" + val['id'] + ".jpg"
               return images.push({
                 name: val['category'],
-                imageUrl: val['link'],
+                imageUrl: url,
                 imagePreviewUrl: previewUrl(val['thumb']),
                 alt: "LGTM"
               });
