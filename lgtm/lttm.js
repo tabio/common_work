@@ -54,6 +54,27 @@ atwhoOptions = {
             });
             return callback(images);
           });
+        case kind !== "c":
+          return $.ajax({
+            url: "http://thecatapi.com/api/images/get?format=xml&results_per_page=4",
+            type: 'GET',
+            dataType: 'xml',
+            timeout: 1000,
+            success: function(xml) {
+              var images;
+              images = [];
+              $(xml).find('url').each(function() {
+                url = $(this).text();
+                return images.push({
+                  name: 'cat',
+                  imageUrl: url,
+                  imagePreviewUrl: previewUrl(url),
+                  alt: "LGTM"
+                });
+              });
+              return callback(images);
+            }
+          });
       }
     }
   }
