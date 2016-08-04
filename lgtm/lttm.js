@@ -47,7 +47,7 @@ atwhoOptions = {
               url = "http://bjin.me//images/pic" + val['id'] + ".jpg"
               return images.push({
                 name: val['category'],
-                imageUrl: url,
+                imageUrl: add_lgtm_url(url),
                 imagePreviewUrl: previewUrl(val['thumb']),
                 alt: "LGTM"
               });
@@ -59,7 +59,7 @@ atwhoOptions = {
             url: "http://thecatapi.com/api/images/get?format=xml&results_per_page=4",
             type: 'GET',
             dataType: 'xml',
-            timeout: 1000,
+            timeout: 3000,
             success: function(xml) {
               var images;
               images = [];
@@ -67,7 +67,7 @@ atwhoOptions = {
                 url = $(this).text();
                 return images.push({
                   name: 'cat',
-                  imageUrl: url,
+                  imageUrl: add_lgtm_url(url),
                   imagePreviewUrl: previewUrl(url),
                   alt: "LGTM"
                 });
@@ -78,6 +78,10 @@ atwhoOptions = {
       }
     }
   }
+};
+
+add_lgtm_url = function(url) {
+  return 'http://hisaichilgtm.herokuapp.com/' + url;
 };
 
 previewUrl = function(url) {
